@@ -1,0 +1,291 @@
+@import "tailwindcss";
+
+:root {
+  --pitch-black: #0a0a0a;
+  --jet-black: #121212;
+  --charcoal-slate: #1e1e1e;
+  --border-muted: #27272a;
+  --surface-gray: #3f3f46;
+  --text-muted: #a1a1aa;
+  --text-light: #e4e4e7;
+  --pure-white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #e4e4e7;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+::selection {
+  background-color: #ffffff;
+  color: #0a0a0a;
+}
+
+/* Architectural grid lines */
+.architectural-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.architectural-grid-fine {
+  background-size: 20px 20px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+.architectural-dots {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+}
+
+/* Subtle scanlines effect for terminal and telemetry */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 18, 18, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+}
+
+/* Micro-borders & hairline dividers */
+.hairline-border {
+  border-color: #27272a;
+}
+
+.hairline-divider {
+  height: 1px;
+  background-color: #27272a;
+  width: 100%;
+}
+
+/* Monospace font class shortcut */
+.font-mono-tech {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+  border-left: 1px solid #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Tactile button hover states */
+.tactile-btn {
+  position: relative;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tactile-btn:active {
+  transform: translateY(1px);
+}
+
+/* Marquee infinite scroll */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Pulse indicator */
+@keyframes subtle-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ========================================================
+   QUIET MIST // SERENE WATERCOLOR THEME OVERRIDES
+   Inspired by: "coffee · mist · mountain / a quiet moment"
+   ======================================================== */
+html.theme-quiet-mist {
+  color-scheme: light;
+}
+
+html.theme-quiet-mist body {
+  background-color: #f4f0e6 !important;
+  color: #1e293b !important;
+}
+
+html.theme-quiet-mist ::selection {
+  background-color: #385a7c !important;
+  color: #ffffff !important;
+}
+
+html.theme-quiet-mist .architectural-grid {
+  background-image: 
+    linear-gradient(to right, rgba(56, 90, 124, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 90, 124, 0.05) 1px, transparent 1px) !important;
+}
+
+html.theme-quiet-mist header {
+  background-color: rgba(244, 240, 230, 0.92) !important;
+  border-color: #d8d1c2 !important;
+}
+
+html.theme-quiet-mist footer {
+  background-color: #eae4d6 !important;
+  border-color: #d8d1c2 !important;
+  color: #475569 !important;
+}
+
+/* Borders and cards in Quiet Mist */
+html.theme-quiet-mist [class*="border-zinc-800"],
+html.theme-quiet-mist [class*="border-zinc-900"],
+html.theme-quiet-mist [class*="border-zinc-700"] {
+  border-color: #d2cabb !important;
+}
+
+html.theme-quiet-mist [class*="bg-zinc-950"],
+html.theme-quiet-mist .bg-\[\#070707\],
+html.theme-quiet-mist .bg-\[\#0d0d0d\],
+html.theme-quiet-mist .bg-\[\#0a0a0a\] {
+  background-color: rgba(238, 233, 222, 0.92) !important;
+}
+
+html.theme-quiet-mist [class*="bg-zinc-900"] {
+  background-color: rgba(228, 222, 209, 0.75) !important;
+}
+
+/* Typography contrast in Quiet Mist */
+html.theme-quiet-mist h1,
+html.theme-quiet-mist h2,
+html.theme-quiet-mist h3,
+html.theme-quiet-mist h4,
+html.theme-quiet-mist h5,
+html.theme-quiet-mist h6 {
+  color: #0f172a !important;
+}
+
+html.theme-quiet-mist p.text-white,
+html.theme-quiet-mist div.text-white:not([class*="bg-[#1e293b]"]):not([class*="bg-[#0f172a]"]) {
+  color: #0f172a !important;
+}
+
+html.theme-quiet-mist .text-zinc-100 {
+  color: #1e293b !important;
+}
+
+html.theme-quiet-mist .text-zinc-200 {
+  color: #27364b !important;
+}
+
+html.theme-quiet-mist .text-zinc-300 {
+  color: #334155 !important;
+}
+
+html.theme-quiet-mist .text-zinc-400 {
+  color: #475569 !important;
+}
+
+html.theme-quiet-mist .text-zinc-500 {
+  color: #64748b !important;
+}
+
+/* Explicit high-contrast white text for dark buttons & badges in Quiet Mist */
+html.theme-quiet-mist .text-inverted-white,
+html.theme-quiet-mist .text-inverted-white *,
+html.theme-quiet-mist [class*="bg-[#1e293b]"],
+html.theme-quiet-mist [class*="bg-[#1e293b]"] *,
+html.theme-quiet-mist [class*="bg-[#0f172a]"],
+html.theme-quiet-mist [class*="bg-[#0f172a]"] * {
+  color: #ffffff !important;
+}
+
+/* Inverted buttons in Quiet Mist */
+html.theme-quiet-mist .bg-zinc-100 {
+  background-color: #1e293b !important;
+  color: #ffffff !important;
+  border-color: #0f172a !important;
+}
+
+html.theme-quiet-mist .bg-zinc-100:hover {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+html.theme-quiet-mist input,
+html.theme-quiet-mist textarea {
+  background-color: #f0ebe0 !important;
+  border-color: #d2cabb !important;
+  color: #0f172a !important;
+}
+
+html.theme-quiet-mist ::-webkit-scrollbar-track {
+  background: #f4f0e6;
+  border-left: 1px solid #d8d1c2;
+}
+
+html.theme-quiet-mist ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+html.theme-quiet-mist ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ========================================================
+   ARABIC TYPOGRAPHY & RTL SUPPORT
+   ======================================================== */
+html.lang-ar body,
+html.lang-ar {
+  font-family: var(--font-cairo), var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+html[dir="rtl"] {
+  text-align: right;
+}
+
+html[dir="rtl"] .font-mono-tech {
+  letter-spacing: normal;
+}
+
